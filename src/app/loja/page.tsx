@@ -3,7 +3,7 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-async function findUserByEmail(email) {
+async function findUserByEmail(email: string) {
   return prisma.user.findUnique({
     where: {
       email: email,
@@ -27,7 +27,7 @@ export default async function Page() {
     // O usuário não existe, então criamos um novo registro
     const newUser = await prisma.user.create({
       data: {
-        name: user.firstName,
+        name: user.firstName || "Anonymous",
         email: user.emailAddresses[0].emailAddress,
       },
     });
