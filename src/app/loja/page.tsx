@@ -32,6 +32,6 @@ export default async function Page() {
       },
     });
 
-    return <div>Hello {newUser.email}</div>;
+    return <div></div>;
   }
 }
