@@ -1,5 +1,6 @@
-import { currentUser } from "@clerk/nextjs";
+import { currentUser, UserButton } from "@clerk/nextjs";
 import { PrismaClient } from "@prisma/client";
+import Link from "next/link";
 
 const prisma = new PrismaClient();
 
@@ -22,7 +23,13 @@ export default async function Page() {
 
   if (existingUser) {
     // O usuário já existe no banco de dados
-    return <div>Hello {user.emailAddresses[0].emailAddress}</div>;
+    return (
+      <div>
+        <UserButton />
+        <h1>Bem-vindo {user.emailAddresses[0].emailAddress}</h1>
+        <Link href="/jogo">Cashback</Link>
+      </div>
+    );
   } else {
     // O usuário não existe, então criamos um novo registro
     const newUser = await prisma.user.create({
