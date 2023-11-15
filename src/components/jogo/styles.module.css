@@ -1,5 +1,4 @@
 .fundo {
-  background-image: url("https://images7.alphacoders.com/133/1334604.png");
   background-size: cover;
   margin: 0;
   width: 100vw;
@@ -174,9 +173,4 @@
     padding: 3vh;
     border-radius: 3vh;
   }
-}
-
-.encontrada {
-  box-shadow: 0 0 5px #33ff00, 0 0 25px #33ff00, 0 0 50px #33ff00,
-    0 0 200px #33ff00;
 }

@@ -1,13 +1,16 @@
 "use client"
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import styles from './styles.module.css';
+
 
 export default function WitchGame() {
   const [contadorClicques, setContadorClicques] = useState(0);
   const [mensagemFinal, setMensagemFinal] = useState(false);
 
-  const handleImageClick = (event: React.MouseEvent<HTMLImageElement>) => {
+
+  const handleImageClick = async (event: React.MouseEvent<HTMLImageElement>) => {
+    
     const target = event.target as HTMLImageElement;
     if (!target.classList.contains('encontrada')) {
       target.classList.add('encontrada');
@@ -15,6 +18,16 @@ export default function WitchGame() {
 
       if (contadorClicques + 1 === 10) {
         setMensagemFinal(true);
+        // Enviar o valor para a API
+        const response = await fetch('/api/cashback', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ cashback: contadorClicques + 1,  }),
+        });
+        const data = await response.json();
+        console.log(data);
       }
     }
   };
