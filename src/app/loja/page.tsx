@@ -26,19 +26,28 @@ export default async function Page() {
     return (
       <div>
         <UserButton />
-        <h1>Bem-vindo {user.emailAddresses[0].emailAddress}</h1>
+        <h1>Bem-vindo de volta {user.emailAddresses[0].emailAddress}</h1>
         <Link href="/jogo">Cashback</Link>
       </div>
     );
   } else {
-    // O usuário não existe, então criamos um novo registro
-    const newUser = await prisma.user.create({
-      data: {
-        name: user.firstName || "Anonymous",
-        email: user.emailAddresses[0].emailAddress,
-      },
-    });
-
-    return <div></div>;
-  }
-}
+    try {
+      const newUser = await prisma.user.create({
+        data: {
+          name: user.firstName || "Anonymous",
+          email: user.emailAddresses[0].emailAddress,
+        },
+      });
+    
+      return (
+        <div>
+          <UserButton />
+          <h1>Voce acaba de criar sua conta, jogue o jogo abaixo {user.emailAddresses[0].emailAddress}</h1>
+          <Link href="/jogo">Cashback</Link>
+        </div>
+      );
+    } catch (error) {
+      console.error("Erro ao criar usuário:", error);
+      // Você pode retornar uma mensagem de erro aqui, se quiser
+    }
+  }}    

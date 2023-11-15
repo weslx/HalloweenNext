@@ -65,7 +65,7 @@
 .contador {
   color: white;
   position: absolute;
-  top: 10vh;
+  top: 1vh;
   background-color: rgba(224, 116, 15, 0.8);
   padding: 1vh;
   border-radius: 0.8vh;
@@ -156,13 +156,17 @@
   }
 
   .contador {
-    top: 10vh;
+    width: 20vh;
+    height: 10vh;
+    top: 1vh;
     padding: 3vh;
     border-radius: 3vh;
   }
 
   .reiniciar {
-    top: 20vh;
+    width: 20vh;
+    height: 8vh;
+    top: 11vh;
     padding: 3vh;
     border-radius: 3vh;
   }
