@@ -1,6 +1,7 @@
 import { currentUser, UserButton } from "@clerk/nextjs";
 import { PrismaClient } from "@prisma/client";
 import Link from "next/link";
+import style from "./style.module.css";
 
 const prisma = new PrismaClient();
 
@@ -9,11 +10,15 @@ async function findUserByEmail(email: string) {
     where: {
       email: email,
     },
+    select: {
+      cashback: true,
+    },
   });
 }
 
 export default async function Page() {
   const user = await currentUser();
+  let cashback;
 
   if (!user) return <div>Not logged in</div>;
 
@@ -22,12 +27,20 @@ export default async function Page() {
   );
 
   if (existingUser) {
-    // O usuário já existe no banco de dados
+    cashback = existingUser.cashback;
+  }
+
+  if (existingUser) {
     return (
-      <div>
-        <UserButton />
-        <h1>Bem-vindo de volta {user.emailAddresses[0].emailAddress}</h1>
-        <Link href="/jogo">Cashback</Link>
+      <div className={style.fundo}>
+        <div className={style.borda}>
+          <UserButton />
+          <h1>
+            Bem-vindo de volta {user.emailAddresses[0].emailAddress}, Voce tem{" "}
+            {cashback}% de cashback
+          </h1>
+          <Link href="/jogo">Cashback</Link>
+        </div>
       </div>
     );
   } else {
@@ -38,16 +51,21 @@ export default async function Page() {
           email: user.emailAddresses[0].emailAddress,
         },
       });
-    
+
       return (
-        <div>
-          <UserButton />
-          <h1>Voce acaba de criar sua conta, jogue o jogo abaixo {user.emailAddresses[0].emailAddress}</h1>
-          <Link href="/jogo">Cashback</Link>
+        <div className={style.fundo}>
+          <div className="">
+            <UserButton />
+            <h1>
+              Voce acaba de criar sua conta, jogue o jogo abaixo{" "}
+              {user.emailAddresses[0].emailAddress}
+            </h1>
+            <Link href="/jogo">Cashback</Link>
+          </div>
         </div>
       );
     } catch (error) {
       console.error("Erro ao criar usuário:", error);
-      // Você pode retornar uma mensagem de erro aqui, se quiser
     }
-  }}    
+  }
+}
