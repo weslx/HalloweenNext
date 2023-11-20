@@ -5,7 +5,7 @@ import style from "./style.module.css";
 
 const prisma = new PrismaClient();
 
-async function findUserByEmail(email: string) {
+async function findUserByEmail(email: any) {
   return prisma.user.findUnique({
     where: {
       email: email,
