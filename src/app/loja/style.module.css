@@ -12,10 +12,10 @@
   display: flex;
   background-color: rgba(100, 0, 30, 0.9);
   color: #ffc300;
-  border: 5vw solid #900c3f; /* Alterado para 5vw para melhor adaptação a dispositivos móveis */
+  border: 1vw solid #900c3f;
   box-shadow: 0 0 3vw #ffc300;
-  width: 90vw; /* Ajustado para 90vw */
-  height: 90vh; /* Ajustado para 90vh */
+  width: 50vw;
+  height: 90vh;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -38,18 +38,22 @@
 .borda h1 {
   font-family: "Creepster", cursive;
   text-shadow: 0.25vw 0.25vw 0.5vw #ff5733;
-  font-size: 5vw; /* Ajustado para 5vw */
+  font-size: 2vw;
 }
 
 .borda a {
   color: #ffc300;
   text-decoration: none;
-  border-bottom: 0.5vw solid #ffc300; /* Ajustado para 0.5vw */
-  padding: 2vw; /* Ajustado para 2vw */
+  border-bottom: 0.5vw solid #ffc300;
+  padding: 2vw;
   transition: all 0.3s ease;
 }
 
-/* Adicionada regra de mídia para ajustes em dispositivos móveis */
+.borda a:hover {
+  color: #ff5733;
+  background-color: #ffc300;
+}
+
 @media only screen and (max-width: 600px) {
   .borda {
     border: 3vw solid #900c3f;
