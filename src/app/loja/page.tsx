@@ -18,10 +18,12 @@ async function findUserByEmail(email: string) {
 
 export default async function Page() {
   const user = await currentUser();
+
+  if (!user) {
+    return <div>Not logged in</div>;
+  }
+
   let cashback;
-
-  if (!user) return <div>Not logged in</div>;
-
   const existingUser = await findUserByEmail(
     user.emailAddresses[0].emailAddress
   );
@@ -36,7 +38,7 @@ export default async function Page() {
         <div className={style.borda}>
           <UserButton />
           <h1>
-            Bem-vindo de volta {user.emailAddresses[0].emailAddress}, Voce tem{" "}
+            Bem-vindo de volta {user.emailAddresses[0].emailAddress}, Você tem{" "}
             {cashback}% de cashback
           </h1>
           <Link href="/jogo">Cashback</Link>
@@ -57,7 +59,7 @@ export default async function Page() {
           <div className="">
             <UserButton />
             <h1>
-              Voce acaba de criar sua conta, jogue o jogo abaixo{" "}
+              Você acaba de criar sua conta, jogue o jogo abaixo{" "}
               {user.emailAddresses[0].emailAddress}
             </h1>
             <Link href="/jogo">Cashback</Link>
