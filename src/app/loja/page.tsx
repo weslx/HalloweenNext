@@ -59,8 +59,8 @@ export default async function Page() {
           <div className="">
             <UserButton />
             <h1>
-              Você acaba de criar sua conta, jogue o jogo abaixo{" "}
-              {user.emailAddresses[0].emailAddress}
+              Você acaba de criar sua conta, jogue o jogo abaixo (se nao
+              carregar o css aperte F5) {user.emailAddresses[0].emailAddress}
             </h1>
             <Link href="/jogo">Cashback</Link>
           </div>
