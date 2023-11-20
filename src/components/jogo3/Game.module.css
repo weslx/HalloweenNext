@@ -1,0 +1,9 @@
+/* Game.module.css */
+.game {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: black;
+  color: white;
+}

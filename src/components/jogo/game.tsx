@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import styles from "./styles.module.css";
+import Link from "next/link";
 
 export default function WitchGame() {
   const [contadorClicques, setContadorClicques] = useState(0);
@@ -17,7 +18,6 @@ export default function WitchGame() {
 
       if (contadorClicques + 1 === 10) {
         setMensagemFinal(true);
-        // Enviar o valor para a API
         const response = await fetch("/api/cashback", {
           method: "POST",
           headers: {
@@ -29,15 +29,6 @@ export default function WitchGame() {
         alert(data);
       }
     }
-  };
-
-  const reiniciarJogo = () => {
-    document.querySelectorAll(".hidden-object").forEach(function (element) {
-      element.classList.remove("encontrada");
-    });
-
-    setContadorClicques(0);
-    setMensagemFinal(false);
   };
 
   return (
@@ -137,9 +128,9 @@ export default function WitchGame() {
       <div id="contador" className={styles.contador}>
         Contagem de Cliques: {contadorClicques}
       </div>
-      <button className={styles.reiniciar} onClick={reiniciarJogo}>
-        Reiniciar Jogo
-      </button>
+      <Link href="/loja" className={styles.reiniciar}>
+        Voltar
+      </Link>
     </div>
   );
 }
