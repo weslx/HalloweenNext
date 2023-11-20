@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(to bottom, #000000, #ff5733);
+  background: linear-gradient(to bottom, #000000, #050505);
   background-size: cover;
   width: 100vw;
   height: 100vh;
@@ -12,16 +12,15 @@
   display: flex;
   background-color: rgba(100, 0, 30, 0.9);
   color: #ffc300;
-  border: 1vw solid #ffc300;
+  border: 1vw solid #900c3f;
   box-shadow: 0 0 3vw #ffc300;
   width: 50vw;
-  height: 90vh;
+  height: 50vh;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   border-radius: 5vw;
   animation: glowing 2s infinite;
-  padding: 20px;
 }
 
 @keyframes glowing {
@@ -37,22 +36,21 @@
 }
 
 .borda h1 {
-  font-family: "Arial", sans-serif;
+  font-family: "Creepster", cursive;
   text-shadow: 0.25vw 0.25vw 0.5vw #ff5733;
   font-size: 2vw;
-  width: 45vh;
-  text-align: center;
-  margin-bottom: 20px;
+}
+
+.button {
+  margin-top: 5vh;
 }
 
 .borda a {
-  color: #bd9c32;
+  color: #ffc300;
   text-decoration: none;
   border-bottom: 0.5vw solid #ffc300;
   padding: 2vw;
   transition: all 0.3s ease;
-  font-size: 1.5em;
-  margin-top: 20px;
 }
 
 .borda a:hover {
@@ -62,7 +60,7 @@
 
 @media only screen and (max-width: 600px) {
   .borda {
-    border: 3vw solid #ffc300;
+    border: 3vw solid #900c3f;
     width: 80vw;
     height: 80vh;
   }
